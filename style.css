@@ -1,0 +1,84 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    font-family:'Courier New', Courier, monospace
+}
+h2{
+    font-size:1.25em;
+}
+.topBox, .middleBox, .bottomBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.topBox {
+    flex: 1 0 10%; /* flex-grow: 1, flex-shrink: 0, flex-basis: 10% */
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.logo {
+    flex-shrink: 0;               /* Prevent shrinking until forced */
+    width: 150px;                 /* Default size */
+    height: auto;
+    max-width: 150px;
+    object-fit: contain;
+}
+.menu{
+    flex-shrink:0;
+    width: 400px;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+}
+.menuBox{
+    display: flex;
+    height:400px;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: flex-center;
+    overflow-y:auto;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    padding: 10px;
+}
+.middleBox {
+    flex: 8 0 80%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;    
+}
+.bottomBox {
+    flex: 1 0 10%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menuBox::-webkit-scrollbar {
+    width: 5px; /* Width of the vertical scrollbar */
+}
+
+.menuBox::-webkit-scrollbar-track {
+    background: black; /* Track color */
+}
+
+.menuBox::-webkit-scrollbar-thumb {
+    background: grey; /* Scroll thumb color */
+}
+
+.menuBox::-webkit-scrollbar-thumb:hover {
+    background: grey; /* Scroll thumb on hover */
+}
+
