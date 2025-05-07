@@ -26,6 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.style.color = "black";
             });
         });
+        const navigators = document.querySelectorAll(".navigator");
+        navigators.forEach(nav => {
+            nav.addEventListener("mouseover", ()=>{
+                nav.style.backgroundColor = "white";
+                nav.style.color = "black";
+            });
+            nav.addEventListener("mouseout", () =>{
+                nav.style.backgroundColor = "black";
+                nav.style.color = "white";
+            });
+        });
     }
 
     attachHoverEvents();
@@ -36,27 +47,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let contentText = "Default content.";
             let contentHeader = "Default Header.";
+            let imageSRC = "resources/logo.jpeg"
             if (itemId === "item1") {
               contentText = "Item 1 content";
               contentHeader = "Item 1 header";
+              imageSRC = "resources/food1.jpg";
             } else if (itemId === "item2") {
               contentText = "Item 2 content";
-              contentHeader = "Item 3 header";
+              contentHeader = "Item 2 header";
+              imageSRC = "resources/food2.jpg";
             } else if (itemId === "item3") {
               contentText = "Item 3 content";
               contentHeader = "Item 3 header";
+              imageSRC = "resources/food3.jpg";
             } else if (itemId === "item4") {
                 contentText = "Item 4 content";
                 contentHeader = "Item 4 header";
+                imageSRC = "resources/food4.jpg";
             } else if (itemId === "item5") {
                 contentText = "Item 5 content";
                 contentHeader = "Item 5 header";
+                imageSRC = "resources/food5.jpg";
             } else if (itemId === "item6") {
                 contentText = "Item 6 content";
                 contentHeader = "Item 6 header";
+                imageSRC = "resources/food6.jpg";
             } else if(itemId == "item7"){
                 contentText = "Item 7 content"
                 contentHeader = "Item 7 header";
+                imageSRC = "resources/food7.jpg";
             }
 
             const page = e.target.dataset.page;
@@ -73,9 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const dynamicDiv = document.getElementById("menucontent");
                 const dynamicHeader = document.getElementById("menucontentheader");
+                const image = document.getElementById("menuImage")
                 if (dynamicDiv) {
                     dynamicDiv.innerText = contentText;
+                }
+                if(dynamicHeader){
                     dynamicHeader.innerText = contentHeader;
+                }
+                if(image){
+                    image.src = imageSRC;
                 }
 
                   // Reattach back button
