@@ -77,12 +77,16 @@ h2{
     color: white;
     
 }
+.cart{
+    border: 1px solid;
+}
 .navigator{
     display: inline-block;
     transition: background-color 0.3s ease;
     background-color: black;
     color: white;
     font-family:'Courier New', Courier, monospace;
+    text-decoration: none;
 }
 .button{
     display: inline-block; /* or block */
@@ -91,13 +95,17 @@ h2{
     color: black;
     font-family:'Courier New', Courier, monospace;
     margin: 0;
-    padding: 0;
+    padding: 5px;
     box-sizing: border-box;
-    width: 100px;
+    height: 25px;
+    width: auto;
     display: block;
     margin: 20px auto;
 }
-.menuInfo{
+#backButton{
+    width: 100px;
+}
+.menuInfo, .orderInfo{
     width: 100%;
     height: 100%;
     display: flex;
@@ -105,6 +113,12 @@ h2{
     align-items: center;
     justify-content: space-between;
 
+}
+.pageButtonGrouper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 .menuBox::-webkit-scrollbar {
     width: 5px; /* Width of the vertical scrollbar */
