@@ -11,6 +11,61 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function renderOrderContent() {
+        const orderContent = document.getElementById("orderContent");
+        const template = document.getElementById("orderItemTemplate");
+    
+        if (!orderContent || !template) return;
+    
+        orderContent.innerHTML = "";
+    
+        if (items.length === 0) {
+            orderContent.innerHTML = "<p>No items in your order.</p>";
+            return;
+        }
+    
+        items.forEach(itemId => {
+            const clone = template.content.cloneNode(true);
+            const header = clone.querySelector(".orderItemHeader");
+            const addBtn = clone.querySelector(".addBtn");
+            const removeBtn = clone.querySelector(".removeBtn");
+    
+            let name = "";
+            switch (itemId) {
+                case "item1": name = "Item 1"; break;
+                case "item2": name = "Item 2"; break;
+                case "item3": name = "Item 3"; break;
+                case "item4": name = "Item 4"; break;
+                case "item5": name = "Item 5"; break;
+                case "item6": name = "Item 6"; break;
+                case "item7": name = "Item 7"; break;
+            }
+    
+            header.textContent = name;
+    
+            if (addBtn) {
+                addBtn.addEventListener("click", () => {
+                    items.push(itemId);
+                    updateCart();
+                    renderOrderContent();
+                });
+            }
+    
+            if (removeBtn) {
+                removeBtn.addEventListener("click", () => {
+                    const index = items.indexOf(itemId);
+                    if (index !== -1) {
+                        items.splice(index, 1);
+                        updateCart();
+                        renderOrderContent();
+                    }
+                });
+            }
+    
+            orderContent.appendChild(clone);
+        });
+    }
+    
     function attachHoverEvents() {
         const boxes = document.querySelectorAll(".item");
         boxes.forEach(item => { item.dataset.page = 'page.html'; });
@@ -144,39 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const orderContent = document.getElementById("orderContent");
                     const template = document.getElementById("orderItemTemplate");
 
-                    if (orderContent && template) {
-                        orderContent.innerHTML = "";
-
-                        if (items.length === 0) {
-                            orderContent.innerHTML = "<p>No items in your order.</p>";
-                        } else {
-                            items.forEach(itemId => {
-                                const clone = template.content.cloneNode(true);
-
-                                const header = clone.querySelector(".orderItemHeader");
-                                const image = clone.querySelector(".orderItemImage");
-                                const description = clone.querySelector(".orderItemDescription");
-
-                                let name = "", desc = "", img = "";
-
-                                switch(itemId) {
-                                    case "item1": name = "Item 1"; desc = "Item 1 description"; img = "resources/food1.jpg"; break;
-                                    case "item2": name = "Item 2"; desc = "Item 2 description"; img = "resources/food2.jpg"; break;
-                                    case "item3": name = "Item 3"; desc = "Item 3 description"; img = "resources/food3.jpg"; break;
-                                    case "item4": name = "Item 4"; desc = "Item 4 description"; img = "resources/food4.jpg"; break;
-                                    case "item5": name = "Item 5"; desc = "Item 5 description"; img = "resources/food5.jpg"; break;
-                                    case "item6": name = "Item 6"; desc = "Item 6 description"; img = "resources/food6.jpg"; break;
-                                    case "item7": name = "Item 7"; desc = "Item 7 description"; img = "resources/food7.jpg"; break;
-                                }
-
-                                header.textContent = name;
-                                image.src = img;
-                                description.textContent = desc;
-
-                                orderContent.appendChild(clone);
-                            });
-                        }
-                    }
+                    renderOrderContent();
 
                     const backBtn = document.getElementById("backButton");
                     if (backBtn) {
